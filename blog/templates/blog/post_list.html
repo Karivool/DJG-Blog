@@ -1,18 +1,14 @@
-<html>
-	<head>
-		<title>H0me 0f Pizza</title>
-	</head>
-	<body>
-		<div>
-			<h1>H0me 0f Pizza</h1>
-		</div>
+{% extends 'blog/base.html' %}
 
+
+{% block content %}
 	{% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaks }}</p>
-    </div>
+		<div class = "post">
+			<div class = "date">
+			    <p>published: {{ post.published_date }}</p>
+			</div>
+	        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+			<p>{{ post.text|linebreaks }}</p>
+		</div>
 	{% endfor %}
-	</body>
-</html>
+{% endblock %}
